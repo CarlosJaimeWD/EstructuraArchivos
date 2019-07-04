@@ -80,7 +80,9 @@ public class ProductoView extends javax.swing.JFrame {
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 420, 800));
         setMinimumSize(new java.awt.Dimension(420, 440));
+        setPreferredSize(new java.awt.Dimension(500, 800));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Id");
@@ -88,6 +90,11 @@ public class ProductoView extends javax.swing.JFrame {
         jLabel1.setBounds(30, 40, 90, 20);
 
         txtMotherboard.setColumns(3);
+        txtMotherboard.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMotherboardKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtMotherboard);
         txtMotherboard.setBounds(120, 120, 170, 25);
 
@@ -98,7 +105,7 @@ public class ProductoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnInsertar);
-        btnInsertar.setBounds(310, 40, 80, 23);
+        btnInsertar.setBounds(310, 40, 80, 29);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +114,7 @@ public class ProductoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(310, 80, 80, 23);
+        btnBuscar.setBounds(310, 80, 80, 29);
 
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +123,7 @@ public class ProductoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditar);
-        btnEditar.setBounds(310, 120, 80, 23);
+        btnEditar.setBounds(310, 120, 80, 29);
 
         btnEliminar.setText("Borrar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +132,7 @@ public class ProductoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEliminar);
-        btnEliminar.setBounds(310, 160, 80, 23);
+        btnEliminar.setBounds(310, 160, 80, 29);
 
         btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +141,7 @@ public class ProductoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnListar);
-        btnListar.setBounds(310, 200, 80, 23);
+        btnListar.setBounds(310, 200, 80, 29);
 
         txaListado.setColumns(20);
         txaListado.setRows(5);
@@ -150,7 +157,7 @@ public class ProductoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(310, 240, 80, 23);
+        jButton1.setBounds(310, 240, 80, 29);
 
         txtId.setColumns(3);
         txtId.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -162,34 +169,69 @@ public class ProductoView extends javax.swing.JFrame {
         txtId.setBounds(120, 40, 170, 25);
 
         txtCPU.setColumns(3);
+        txtCPU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCPUKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtCPU);
         txtCPU.setBounds(120, 80, 170, 25);
 
         txtGPU.setColumns(3);
+        txtGPU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGPUKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtGPU);
         txtGPU.setBounds(120, 200, 170, 25);
 
         txtRAM.setColumns(3);
+        txtRAM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRAMKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtRAM);
         txtRAM.setBounds(120, 160, 170, 25);
 
         txtMonitores.setColumns(3);
+        txtMonitores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMonitoresKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtMonitores);
         txtMonitores.setBounds(120, 320, 170, 25);
 
         txtPrecio.setColumns(3);
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtPrecio);
         txtPrecio.setBounds(120, 360, 170, 25);
 
         txtPSU.setColumns(3);
+        txtPSU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPSUKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtPSU);
         txtPSU.setBounds(120, 240, 170, 25);
 
         txtGabinete.setColumns(3);
+        txtGabinete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGabineteKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtGabinete);
         txtGabinete.setBounds(120, 280, 170, 25);
 
-        jLabel6.setText("Precio");
+        jLabel6.setText("tamaño");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(30, 360, 90, 20);
 
@@ -225,29 +267,35 @@ public class ProductoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-        dto=new ProductoDTO();
-        dto.setId(Long.parseLong(txtId.getText()));
-        dto.setCpu(new StringBuffer(txtCPU.getText()));
-        dto.setMotherboard(new StringBuffer(txtMotherboard.getText()));
-        dto.setRam(Integer.parseInt(txtRAM.getText()));
-        dto.setGpu(new StringBuffer(txtGPU.getText()));
-        dto.setPsu(Integer.parseInt(txtPSU.getText()));
-        dto.setGabinete(new StringBuffer(txtGabinete.getText()));
-        dto.setMonitores(Integer.parseInt(txtMonitores.getText()));
-        dto.setPrecio(BigDecimal.valueOf(Double.parseDouble(txtPrecio.getText())));
-        try {
-            if(dao.agregar(dto)){
-                JOptionPane.showMessageDialog(this, " INSERTADO ");
-            }else{
-                JOptionPane.showMessageDialog(this, " NO SE PUDO INSERTAR ");
+        if (!txtId.getText().isEmpty() && !txtCPU.getText().isEmpty() && !txtMotherboard.getText().isEmpty() && !txtRAM.getText().isEmpty() && !txtGPU.getText().isEmpty() && !txtPSU.getText().isEmpty() && !txtGabinete.getText().isEmpty() && !txtMonitores.getText().isEmpty() && !txtPrecio.getText().isEmpty()) {
+            dto=new ProductoDTO();
+            dto.setId(Long.parseLong(txtId.getText()));
+            dto.setCpu(new StringBuffer(txtCPU.getText()));
+            dto.setMotherboard(new StringBuffer(txtMotherboard.getText()));
+            dto.setRam(Integer.parseInt(txtRAM.getText()));
+            dto.setGpu(new StringBuffer(txtGPU.getText()));
+            dto.setPsu(Integer.parseInt(txtPSU.getText()));
+            dto.setGabinete(new StringBuffer(txtGabinete.getText()));
+            dto.setMonitores(Integer.parseInt(txtMonitores.getText()));
+            dto.setPrecio(Integer.parseInt(txtPrecio.getText()));
+        
+            try {
+                if(dao.agregar(dto)){
+                    JOptionPane.showMessageDialog(this, " INSERTADO ");
+                }else{
+                    JOptionPane.showMessageDialog(this, " NO SE PUDO INSERTAR ");
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(ProductoView.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(ProductoView.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(null, "Llena todos los campos");
         }
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String Id=JOptionPane.showInputDialog(" Id a buscar ");
+        if ((Id != null) && (Id.length() > 0)) {
         dto=new ProductoDTO();
         dto.setId(Long.parseLong(Id));
         try {
@@ -271,31 +319,31 @@ public class ProductoView extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductoView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 //        dto=new ProductoDTO();
-        dto.setId(Long.parseLong(txtId.getText()));
-        dto.setCpu(new StringBuffer(txtCPU.getText()));
-        dto.setMotherboard(new StringBuffer(txtMotherboard.getText()));
-        dto.setRam(Integer.parseInt(txtRAM.getText()));
-        dto.setGpu(new StringBuffer(txtGPU.getText()));
-        dto.setPsu(Integer.parseInt(txtPSU.getText()));
-        dto.setGabinete(new StringBuffer(txtGabinete.getText()));
-        dto.setMonitores(Integer.parseInt(txtMonitores.getText()));
-        dto.setPrecio(BigDecimal.valueOf(Double.parseDouble(txtPrecio.getText())));
-        try {
-            if(dao.actualizar(dto)){
-                JOptionPane.showMessageDialog(this, " EDITADO ");
-            }else{
-                JOptionPane.showMessageDialog(this, " NO SE PUDO EDITAR ");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(ProductoView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                if (!txtId.getText().isEmpty() && !txtCPU.getText().isEmpty() && !txtMotherboard.getText().isEmpty() && !txtRAM.getText().isEmpty() && !txtGPU.getText().isEmpty() && !txtPSU.getText().isEmpty() && !txtGabinete.getText().isEmpty() && !txtMonitores.getText().isEmpty() && !txtPrecio.getText().isEmpty()) {
+                     try {
+                        if(dao.actualizar(dto)){
+                            JOptionPane.showMessageDialog(this, " EDITADO ");
+                        }else{
+                            JOptionPane.showMessageDialog(this, " NO SE PUDO EDITAR ");
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(ProductoView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Llena todos los datos");
+                }
+       
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+                        if (!txtId.getText().isEmpty() && !txtCPU.getText().isEmpty() && !txtMotherboard.getText().isEmpty() && !txtRAM.getText().isEmpty() && !txtGPU.getText().isEmpty() && !txtPSU.getText().isEmpty() && !txtGabinete.getText().isEmpty() && !txtMonitores.getText().isEmpty() && !txtPrecio.getText().isEmpty()) {
+
         dto=new ProductoDTO();
         try {
             if(dao.eliminar(dto)){
@@ -306,7 +354,9 @@ public class ProductoView extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(ProductoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+} else {
+                    JOptionPane.showMessageDialog(null, "Llena todos los datos");
+                }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
@@ -344,6 +394,46 @@ public class ProductoView extends javax.swing.JFrame {
         if (txtId.getText().length() >= 3 ) 
             evt.consume(); 
     }//GEN-LAST:event_txtIdKeyTyped
+
+    private void txtCPUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPUKeyTyped
+         if (txtCPU.getText().length() >= 15 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtCPUKeyTyped
+
+    private void txtMotherboardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMotherboardKeyTyped
+         if (txtMotherboard.getText().length() >= 20 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtMotherboardKeyTyped
+
+    private void txtRAMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRAMKeyTyped
+        if (txtRAM.getText().length() >= 3 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtRAMKeyTyped
+
+    private void txtGPUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGPUKeyTyped
+        if (txtGPU.getText().length() >= 20 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtGPUKeyTyped
+
+    private void txtPSUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPSUKeyTyped
+        if (txtPSU.getText().length() >= 4 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtPSUKeyTyped
+
+    private void txtGabineteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGabineteKeyTyped
+        if (txtGabinete.getText().length() >= 20 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtGabineteKeyTyped
+
+    private void txtMonitoresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMonitoresKeyTyped
+        if (txtMonitores.getText().length() >= 1 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtMonitoresKeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        if (txtPrecio.getText().length() >= 2 ) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtPrecioKeyTyped
 
     /**
      * @param args the command line arguments

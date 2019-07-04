@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class ProductoDTO implements Serializable{
     
     private static final Logger LOG = Logger.getLogger(ProductoDTO.class.getName());
-    public static final int longitud=150+Long.BYTES+Double.BYTES+Integer.BYTES+Integer.BYTES+Integer.BYTES+22;
+    public static final int longitud=150+Long.BYTES+Integer.BYTES+Integer.BYTES+Integer.BYTES+Integer.BYTES+22;
     
     private Long id;
     private StringBuffer cpu;
@@ -30,21 +30,21 @@ public class ProductoDTO implements Serializable{
     private Integer psu;
     private StringBuffer gabinete;
     private Integer monitores;
-    private BigDecimal precio;
+    private Integer precio;
 
     public ProductoDTO() {
         setId(0L);
         setCpu(new StringBuffer(""));
         setMotherboard(new StringBuffer(""));
-        setRam(0);
+        setRam(000);
         setGpu(new StringBuffer(""));
-        setPsu(0);
+        setPsu(0000);
         setGabinete(new StringBuffer(""));
         setMonitores(0);
-        setPrecio(new BigDecimal(0.0));
+        setPrecio(00);
     }
 
-    public ProductoDTO(Long id, StringBuffer cpu, StringBuffer motherboard, Integer ram, StringBuffer gpu, Integer psu, StringBuffer gabinete, Integer monitores, BigDecimal precio) {
+    public ProductoDTO(Long id, StringBuffer cpu, StringBuffer motherboard, Integer ram, StringBuffer gpu, Integer psu, StringBuffer gabinete, Integer monitores, Integer precio) {
         setId(id);
         setCpu(cpu);
         setMotherboard(motherboard);
@@ -65,19 +65,25 @@ public class ProductoDTO implements Serializable{
     */
     
     public ProductoDTO(String registro){
-        System.out.println(registro);
-        registro=registro.substring(3);
-        registro=registro.replace("}", "");
-        String datos[] = registro.split(",");
-        id = Long.parseLong(datos[0]);
-        cpu = new StringBuffer(datos[1].trim());
-        motherboard = new StringBuffer(datos[2].trim());
-        ram = Integer.parseInt(datos[3]);
-        gpu = new StringBuffer(datos[4].trim());
-        psu = Integer.parseInt(datos[5]);
-        gabinete = new StringBuffer(datos[6].trim());
-        monitores = Integer.parseInt(datos[7]);
-        precio = BigDecimal.valueOf(Double.parseDouble(datos[8]));
+        //System.out.println(registro);
+       // registro=registro.substring(3);
+        //registro=registro.replace("}", "");
+        if (registro != null) {
+            registro = registro.substring(registro.indexOf("{")+1, registro.indexOf("}"));
+            String datos[] = registro.split(",");
+            System.out.println("id: " + datos[0]);
+            if (!datos[0].equals("000")) {
+                id = Long.parseLong(datos[0]);
+            cpu = new StringBuffer(datos[1].trim());
+            motherboard = new StringBuffer(datos[2].trim());
+            ram = Integer.parseInt(datos[3]);
+            gpu = new StringBuffer(datos[4].trim());
+            psu = Integer.parseInt(datos[5]);
+            gabinete = new StringBuffer(datos[6].trim());
+            monitores = Integer.parseInt(datos[7]);
+            precio = Integer.parseInt((datos[8]));
+            }
+        }
     }
 
     public Long getId() {
@@ -160,11 +166,11 @@ public class ProductoDTO implements Serializable{
         this.monitores = monitores;
     }
 
-    public BigDecimal getPrecio() {
+    public Integer getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(Integer precio) {
         this.precio = precio;
     }
 
@@ -217,12 +223,9 @@ public class ProductoDTO implements Serializable{
             case 2: psuS="00"+psu; break;    
             case 3: psuS="0"+psu; break;    
         }
-        switch(precioS.length()){
-            case 1: precioS="00"+precio+".0"; break;
-            case 2: precioS="0"+precio+".0"; break;            
-            case 3: precioS="00"+precio; break;
-            case 4: precioS="0"+precio; break; 
-            default: precioS=""+precio;break;
+
+            switch(precioS.length()){
+            case 1: precioS="0"+precio; break;
         }
         return "{" + idS + "," + cpu + "," + motherboard + "," + ramS + "," + gpu + "," + psuS + "," + gabinete + "," + monitoresS + "," + precioS + "}\n";
     }

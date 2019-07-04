@@ -71,14 +71,22 @@ public class ProductoFDAO {
         ProductoDTO producto=null;
         String registro=null;
         numRegistro=0;
+        System.out.println("raflenght: " + raf.length());
         do{
             registro=raf.readLine();
-            producto=new ProductoDTO(registro);
-            if(producto.equals(dto)){
-                System.out.println(producto+" encontrado en la posicion "+numRegistro);
-                break;
-            }
-            numRegistro++;            
+            System.out.println("registro raf: " + registro);
+                if (registro == null) {
+                    producto = null;
+                } else {
+                    producto=new ProductoDTO(registro);
+                    if(producto.equals(dto)){
+                        System.out.println(producto+" encontrado en la posicion "+numRegistro);
+                        break;
+                    }
+                }
+       
+                numRegistro++;    
+               
         }while(registro!=null);
         raf.seek(0);
         return producto;
@@ -91,8 +99,9 @@ public class ProductoFDAO {
         raf.seek(0);
         do{
             registro=raf.readLine();
-            producto=new ProductoDTO(registro);
-            productos.add(producto);
+            System.out.println("raf: " + registro);
+                producto=new ProductoDTO(registro);
+                productos.add(producto);
         }while(registro!=null);
         raf.seek(0);
         return productos;
